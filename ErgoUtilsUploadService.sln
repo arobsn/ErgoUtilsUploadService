@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoUtilsUploadService", "ErgoUtilsUploadService.csproj", "{55DB4291-066C-440D-B199-64A87F40726B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55DB4291-066C-440D-B199-64A87F40726B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55DB4291-066C-440D-B199-64A87F40726B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55DB4291-066C-440D-B199-64A87F40726B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55DB4291-066C-440D-B199-64A87F40726B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2B077B9-ED5C-40CA-B0A7-13D8156AFA05}
+	EndGlobalSection
+EndGlobal
