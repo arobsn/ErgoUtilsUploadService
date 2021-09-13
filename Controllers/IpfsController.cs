@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +30,10 @@ namespace ErgoUtilsUploadService.Controllers
             var response = await client.ExecuteAsync(request);
             if (response.IsSuccessful)
             {
-                await HitGateway(GetCid(response));
+                new Thread(delegate ()
+                {
+                    HitGateway(GetCid(response));
+                }).Start();
             }
 
             return ResponseFrom(response);
@@ -58,7 +63,7 @@ namespace ErgoUtilsUploadService.Controllers
         /// get imediate caching and cut down on the perceived wait time,
         /// as suggested at https://github.com/anon-real/ErgoUtils/pull/2#issuecomment-917662151
         /// </summary>
-        private static async Task HitGateway(string cid)
+        private static void HitGateway(string cid)
         {
             if (string.IsNullOrWhiteSpace(cid))
             {
@@ -66,8 +71,8 @@ namespace ErgoUtilsUploadService.Controllers
             }
 
             var gatewayUrl = $"https://cloudflare-ipfs.com/ipfs/{cid}";
-            var client = new RestClient(gatewayUrl) { Timeout = 0 };
-            await client.ExecuteAsync(new RestRequest(Method.GET));
+            var client = new RestClient(gatewayUrl);
+            client.Execute(new RestRequest(Method.GET));
         }
 
         [HttpGet("check/{cid}")]
